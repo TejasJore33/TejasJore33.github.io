@@ -12,11 +12,16 @@ import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 import { TechTicker } from './components/TechTicker'
 import { WhyMe } from './components/WhyMe'
+import { BackToTop } from './components/BackToTop'
+import { ScrollProgress } from './components/ScrollProgress'
+import { useSpotlight } from './hooks/useSpotlight'
 import { hasExperience } from './data/site'
 
 export default function App() {
+  useSpotlight()
   return (
     <>
+      <ScrollProgress />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-white focus:px-4 focus:py-2 focus:text-ink-950"
@@ -39,6 +44,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   )
 }

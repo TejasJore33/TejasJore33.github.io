@@ -3,13 +3,18 @@ import { heroStats, profile } from '../data/site'
 import { CodeCard } from './CodeCard'
 import { Reveal } from './Reveal'
 import { StatCounter } from './StatCounter'
+import { Typewriter } from './Typewriter'
 
 export function Hero() {
   return (
     <section id="home" className="relative overflow-hidden pt-32 pb-16 sm:pt-40">
       {/* background decoration */}
       <div className="bg-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="absolute -top-40 left-[10%] h-[460px] w-[560px] animate-aurora rounded-full bg-emerald-500/15 blur-3xl" />
+        <div className="absolute -top-24 right-[5%] h-[420px] w-[520px] animate-aurora-slow rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute top-1/2 left-1/3 h-[320px] w-[420px] animate-aurora rounded-full bg-teal-400/[0.07] blur-3xl [animation-delay:-9s]" />
+      </div>
 
       <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.15fr_1fr]">
         <Reveal className="min-w-0">
@@ -21,7 +26,13 @@ export function Hero() {
           )}
           <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
             Hi, I'm <span className="text-gradient">{profile.name}</span>.
-            <span className="mt-2 block text-slate-200">{profile.headline}</span>
+            {profile.roles.length > 0 ? (
+              <span className="mt-2 block min-h-[2.5em] text-slate-200">
+                I build <Typewriter words={profile.roles} className="text-gradient" />
+              </span>
+            ) : (
+              <span className="mt-2 block text-slate-200">{profile.headline}</span>
+            )}
           </h1>
           <p className="mt-6 max-w-xl text-lg text-slate-400">{profile.summary}</p>
           {profile.location && (

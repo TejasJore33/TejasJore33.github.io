@@ -13,6 +13,33 @@
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-aurora: aurora 18s ease-in-out infinite alternate;
+  --animate-aurora-slow: aurora 26s ease-in-out infinite alternate-reverse;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 6s linear infinite;
+
+  @keyframes caret {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  @keyframes aurora {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    50% { transform: translate3d(8%, 6%, 0) scale(1.15); }
+    100% { transform: translate3d(-6%, 10%, 0) scale(0.95); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes shimmer {
+    from { background-position: 0% 50%; }
+    to { background-position: 200% 50%; }
+  }
+  @keyframes line-in {
+    from { opacity: 0; transform: translateX(-8px); }
+    to { opacity: 1; transform: none; }
+  }
 
   @keyframes marquee {
     from { transform: translateX(0); }
@@ -45,10 +72,34 @@
 
 @layer components {
   .text-gradient {
-    @apply bg-gradient-to-r from-emerald-300 via-teal-300 to-cyan-300 bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #6ee7b7, #5eead4, #67e8f9, #5eead4, #6ee7b7);
+    background-size: 200% auto;
+    animation: var(--animate-shimmer);
   }
   .card {
-    @apply rounded-2xl border border-line bg-ink-900/70 backdrop-blur-sm transition duration-300;
+    @apply relative rounded-2xl border border-line bg-ink-900/70 backdrop-blur-sm transition duration-300;
+  }
+  /* Cursor spotlight (position set by useSpotlight) */
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(52 211 153 / 0.09), transparent 45%);
+  }
+  .card:hover::after {
+    opacity: 1;
+  }
+  /* Code card lines appear one after another */
+  .code-line {
+    opacity: 0;
+  }
+  .is-visible .code-line {
+    animation: line-in 0.45s ease forwards;
   }
   .card-hover {
     @apply hover:-translate-y-1 hover:border-emerald-400/40 hover:shadow-[0_10px_40px_-12px_rgb(52_211_153/0.25)];
@@ -91,7 +142,16 @@
     transform: none;
     transition: none;
   }
-  .animate-marquee {
+  .animate-marquee,
+  .animate-aurora,
+  .animate-aurora-slow,
+  .animate-float,
+  .text-gradient {
+    animation: none;
+  }
+  .code-line,
+  .is-visible .code-line {
+    opacity: 1;
     animation: none;
   }
 }

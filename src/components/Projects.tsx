@@ -14,12 +14,12 @@ function ProjectCard({ project }: { project: Project }) {
     .join('')
 
   return (
-    <article className="card card-hover flex h-full flex-col overflow-hidden">
+    <article className="card card-hover group flex h-full flex-col overflow-hidden">
       <div className="relative aspect-[16/9] overflow-hidden border-b border-line">
         {project.image ? (
-          <img src={project.image} alt={`${project.title} screenshot`} className="size-full object-cover" loading="lazy" />
+          <img src={project.image} alt={`${project.title} screenshot`} className="size-full object-cover object-top transition duration-700 group-hover:scale-105" loading="lazy" />
         ) : (
-          <div className="grid size-full place-items-center bg-gradient-to-br from-emerald-500/20 via-ink-800 to-cyan-500/20">
+          <div className="grid size-full place-items-center bg-gradient-to-br from-emerald-500/20 via-ink-800 to-cyan-500/20 transition duration-700 group-hover:scale-105">
             <span className="font-display text-5xl font-bold text-white/20">{initials}</span>
           </div>
         )}
@@ -84,7 +84,7 @@ export function Projects() {
       number={sectionNumber('projects')}
       eyebrow="Projects"
       title={<>Selected <span className="text-gradient">work</span></>}
-      subtitle="Things I've built — backends, web apps and practice projects."
+      subtitle="Products, websites and backends I've built and shipped."
       className="bg-ink-900/40"
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

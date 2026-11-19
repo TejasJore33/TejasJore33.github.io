@@ -40,7 +40,7 @@ export function CodeCard() {
   ]
 
   return (
-    <div className="relative">
+    <div className="relative animate-float">
       <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-emerald-400/20 via-transparent to-cyan-400/20 blur-2xl" aria-hidden="true" />
       <div className="card relative min-w-0 overflow-hidden shadow-2xl shadow-black/40">
         <div className="flex items-center gap-2 border-b border-line bg-ink-800/80 px-4 py-3">
@@ -52,7 +52,7 @@ export function CodeCard() {
         <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-7 sm:text-sm" aria-label="Developer profile as code">
           <code>
             {lines.map((line, i) => (
-              <div key={i} className="whitespace-pre-wrap">
+              <div key={i} className="code-line whitespace-pre-wrap" style={{ animationDelay: `${350 + i * 120}ms` }}>
                 <span className="mr-4 inline-block w-4 select-none text-right text-slate-600">{i + 1}</span>
                 {line}
               </div>

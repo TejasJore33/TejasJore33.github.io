@@ -56,6 +56,8 @@ export const profile = {
   name: 'Tejas Jore',
   initials: 'TJ',
   role: 'Full-Stack Developer',
+  /** Rotating words in the hero headline */
+  roles: ['full-stack products', 'HR & SaaS platforms', 'NestJS APIs', 'React interfaces'],
   location: '', // e.g. "Pune, India" — empty hides it
   available: true, // shows the green "Open to opportunities" badge
   headline: 'I build web apps and the APIs behind them.',
@@ -81,10 +83,10 @@ export const codeCard = {
 
 /* ---------- Hero ---------- */
 export const heroStats: Stat[] = [
-  { value: 9, label: 'Public repositories' },
+  { value: 10, suffix: '+', label: 'Public repositories' },
   { value: 4, suffix: '+', label: 'Years on GitHub' },
   { value: 8, suffix: '+', label: 'Third-party integrations' },
-  { value: 2, label: 'Live deployments' },
+  { value: 4, label: 'Live products & sites' },
 ]
 
 export const techTicker = [
@@ -134,6 +136,25 @@ export const nav = [
 /* ---------- Projects ---------- */
 export const projects: Project[] = [
   {
+    title: 'PeoplePilot OS',
+    category: 'SaaS · HR platform',
+    blurb: 'The HR operating system for growing companies.',
+    description:
+      'Cloud HR platform covering hiring, onboarding, payroll, time & leave, performance and analytics — with Indian statutory compliance (PF, ESI, PT, TDS), employee self-service, an AI HR assistant grounded in company policy, and a separate workspace per organisation.',
+    tags: ['Multi-tenant SaaS', 'Payroll', 'AI assistant', 'SSO', 'Webhooks'],
+    image: '/projects/peoplepilot.jpg',
+    links: [{ label: 'Live site', href: 'https://peoplepilotos.com/' }],
+  },
+  {
+    title: 'Avis Engineering & Consultancy',
+    category: 'Business website',
+    blurb: 'Website for an NDT engineering consultancy.',
+    description:
+      'Website for Avis Engineering & Consultancy, presenting their advanced and conventional Non-Destructive Testing (NDT) services. Built as a React single-page application.',
+    tags: ['React', 'SPA', 'Responsive'],
+    links: [{ label: 'Live site', href: 'https://avisengineering.com/' }],
+  },
+  {
     title: 'Matrimonial Platform API',
     category: 'Backend',
     blurb: 'Full backend for a matchmaking platform.',
@@ -145,20 +166,24 @@ export const projects: Project[] = [
   {
     title: 'Aalandi Survey',
     category: 'Web app',
-    blurb: 'Survey web app, live on Vercel.',
-    description: 'A multi-page React survey application with client-side routing, built with Create React App and deployed on Vercel.',
-    tags: ['React', 'React Router', 'JavaScript', 'CSS'],
+    blurb: 'Survey app with admin and user logins.',
+    description:
+      'React survey application with separate admin and user login flows and client-side routing, deployed on Vercel.',
+    tags: ['React', 'React Router', 'JavaScript', 'Vercel'],
+    image: '/projects/aalandi-survey.jpg',
     links: [
       { label: 'Live site', href: 'https://aalandi-survey.vercel.app' },
       { label: 'GitHub', href: gh('aalandi-survey') },
     ],
   },
   {
-    title: 'React Projects',
-    category: 'Frontend',
-    blurb: 'React apps and UI experiments.',
-    description: 'A collection of React components and small apps, deployed on Vercel.',
-    tags: ['React', 'JavaScript', 'CSS'],
+    title: 'Image to Base64 Converter',
+    category: 'Tool',
+    blurb: 'Drag-and-drop image encoder with dark mode.',
+    description:
+      'A React utility that converts JPG, PNG, GIF, BMP and SVG images to Base64 in the browser, with drag-and-drop upload, a 5 MB per-file limit and a dark-mode toggle.',
+    tags: ['React', 'File API', 'Dark mode'],
+    image: '/projects/react-projects.jpg',
     links: [
       { label: 'Live site', href: 'https://react-gamma-three-61.vercel.app' },
       { label: 'GitHub', href: gh('React') },
@@ -171,22 +196,6 @@ export const projects: Project[] = [
     description: 'A MongoDB, Express, Angular and Node.js project exploring a modern MEAN-stack setup.',
     tags: ['MongoDB', 'Express', 'Node.js', 'JavaScript'],
     links: [{ label: 'GitHub', href: gh('MEAN-MODERN') }],
-  },
-  {
-    title: 'Frontend Projects',
-    category: 'Frontend',
-    blurb: 'Vanilla HTML, CSS and JavaScript builds.',
-    description: 'Small front-end projects built without frameworks to practise layout, DOM scripting and styling.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-    links: [{ label: 'GitHub', href: gh('Frontend-Projects') }],
-  },
-  {
-    title: 'JavaScript Practice',
-    category: 'Learning',
-    blurb: 'Core JavaScript, exercise by exercise.',
-    description: 'A large set of JavaScript exercises and mini-programs covering the language fundamentals in depth.',
-    tags: ['JavaScript', 'HTML'],
-    links: [{ label: 'GitHub', href: gh('javascript') }],
   },
 ]
 
@@ -236,7 +245,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'What are you building right now?',
-    a: 'The backend for a matrimonial platform — auth, real-time chat, payments, SMS and notifications on NestJS + Prisma.',
+    a: 'Product work on PeoplePilot OS, an HR platform with payroll and compliance built in, alongside a NestJS + Prisma backend for a matrimonial platform.',
   },
   {
     q: 'Are you open to new opportunities?',
