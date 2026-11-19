@@ -32,13 +32,13 @@ export function Contact() {
                   </span>
                   <ArrowUpRight className="size-4 text-slate-600 transition group-hover:text-emerald-300" aria-hidden />
                 </div>
-        )}
-              <p className="mt-5 text-sm text-slate-500">{label}</p>
-              <p className="mt-1 break-all font-medium text-white">{value}</p>
-            </a>
-          </Reveal>
-        ))}
-      </div>
+                <p className="mt-5 text-sm text-slate-500">{label}</p>
+                <p className="mt-1 break-all font-medium text-white">{value}</p>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      )}
 
       <Reveal className={contactChannels.length > 1 ? 'mt-10' : ''}>
         <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-900 p-8 sm:p-14">
