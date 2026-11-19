@@ -1,6 +1,6 @@
-import { ArrowUpRight, ChevronDown } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Lock } from 'lucide-react'
 import { useId, useState } from 'react'
-import { projects, type Project, sectionNumber } from '../data/site'
+import { moreProjects, projects, type Project, sectionNumber } from '../data/site'
 import { Reveal } from './Reveal'
 import { Section } from './SectionHeading'
 
@@ -19,13 +19,22 @@ function ProjectCard({ project }: { project: Project }) {
         {project.image ? (
           <img src={project.image} alt={`${project.title} screenshot`} className="size-full object-cover object-top transition duration-700 group-hover:scale-105" loading="lazy" />
         ) : (
-          <div className="grid size-full place-items-center bg-gradient-to-br from-emerald-500/20 via-ink-800 to-cyan-500/20 transition duration-700 group-hover:scale-105">
-            <span className="font-display text-5xl font-bold text-white/20">{initials}</span>
+          <div className="relative grid size-full place-items-center overflow-hidden bg-gradient-to-br from-emerald-500/15 via-ink-800 to-cyan-500/15 transition duration-700 group-hover:scale-105">
+            <div className="bg-grid absolute inset-0 opacity-60" aria-hidden="true" />
+            <span className="absolute -right-4 -bottom-6 font-display text-8xl font-bold text-white/[0.04]" aria-hidden="true">
+              {initials}
+            </span>
+            <span className="relative px-6 text-center font-display text-2xl font-bold text-gradient">{project.title}</span>
           </div>
         )}
         <span className="absolute left-3 top-3 rounded-full border border-white/10 bg-ink-950/80 px-3 py-1 text-xs font-medium text-emerald-200 backdrop-blur">
           {project.category}
         </span>
+        {project.role && (
+          <span className="absolute right-3 top-3 rounded-full border border-cyan-300/30 bg-ink-950/80 px-3 py-1 text-xs font-medium text-cyan-200 backdrop-blur">
+            {project.role}
+          </span>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-6">
@@ -71,6 +80,11 @@ function ProjectCard({ project }: { project: Project }) {
               {l.label} <ArrowUpRight className="size-3.5" aria-hidden />
             </a>
           ))}
+          {project.private && (
+            <span className="inline-flex items-center gap-1 text-slate-500" title="Source code is in a private repository">
+              <Lock className="size-3.5" aria-hidden /> Private code
+            </span>
+          )}
         </div>
       </div>
     </article>
@@ -84,7 +98,7 @@ export function Projects() {
       number={sectionNumber('projects')}
       eyebrow="Projects"
       title={<>Selected <span className="text-gradient">work</span></>}
-      subtitle="Products, websites and backends I've built and shipped."
+      subtitle="SaaS platforms, marketplaces and client products. Most of this code lives in private repositories."
       className="bg-ink-900/40"
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -94,6 +108,36 @@ export function Projects() {
           </Reveal>
         ))}
       </div>
+
+      {moreProjects.length > 0 && (
+        <Reveal className="mt-14">
+          <h3 className="mb-5 font-display text-xl font-semibold text-white">More projects</h3>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {moreProjects.map((m) => {
+              const inner = (
+                <>
+                  <span className="flex items-center justify-between gap-2 font-medium text-white">
+                    {m.title}
+                    {m.href && <ArrowUpRight className="size-4 shrink-0 text-slate-500 transition group-hover:text-emerald-300" aria-hidden />}
+                  </span>
+                  <span className="mt-1 block text-sm text-slate-400">{m.text}</span>
+                </>
+              )
+              return (
+                <li key={m.title}>
+                  {m.href ? (
+                    <a href={m.href} target="_blank" rel="noreferrer" className="card card-hover group block h-full p-5">
+                      {inner}
+                    </a>
+                  ) : (
+                    <div className="card h-full p-5">{inner}</div>
+                  )}
+                </li>
+              )
+            })}
+          </ul>
+        </Reveal>
+      )}
     </Section>
   )
 }
