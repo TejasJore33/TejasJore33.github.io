@@ -5,7 +5,7 @@ import { Section } from './SectionHeading'
 
 export function Experience() {
   return (
-    <Section id="experience" number={sectionNumber('experience')} eyebrow="Experience" title={<>Where I've <span className="text-gradient">worked</span></>}>
+    <Section id="experience" number={sectionNumber('experience')} eyebrow="Experience" title="Where I've" accent="worked">
       <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
         {/* Work timeline */}
         <ol className="relative space-y-8 border-l border-line pl-8">

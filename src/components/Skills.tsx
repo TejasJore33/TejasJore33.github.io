@@ -8,7 +8,7 @@ export function Skills() {
       id="skills"
       number={sectionNumber('skills')}
       eyebrow="Skills"
-      title={<>Tools I use to <span className="text-gradient">ship</span></>}
+      title="Tools I use to" accent="ship"
       subtitle="A practical toolkit across the stack — chosen for each project, not out of habit."
       className="bg-ink-900/40"
     >

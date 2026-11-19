@@ -8,7 +8,7 @@ export function Process() {
       id="process"
       number={sectionNumber('process')}
       eyebrow="Process"
-      title={<>How I <span className="text-gradient">work</span></>}
+      title="How I" accent="work"
       subtitle="A simple, transparent process from first call to long after launch."
       className="bg-ink-900/40"
     >

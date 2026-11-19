@@ -11,7 +11,7 @@ export function Footer() {
   ].filter((s) => s.href)
 
   return (
-    <footer className="border-t border-line bg-ink-950">
+    <footer className="relative border-t border-line bg-ink-950">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[2fr_1fr_1fr]">
         <div>
           <a href="#home" className="flex items-center gap-2.5">
@@ -79,6 +79,11 @@ export function Footer() {
             Back to top <ArrowUp className="size-4" aria-hidden />
           </a>
         </div>
+      </div>
+      <div aria-hidden="true" className="overflow-hidden">
+        <p className="-mb-[2.5vw] select-none whitespace-nowrap text-center font-display text-[16vw] font-bold uppercase leading-none tracking-tighter text-transparent [-webkit-text-stroke:1px_rgb(148_163_184/0.14)]">
+          {profile.name}
+        </p>
       </div>
     </footer>
   )

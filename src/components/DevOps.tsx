@@ -10,7 +10,7 @@ export function DevOps() {
       id="devops"
       number={sectionNumber('devops')}
       eyebrow="Deployment & DevOps"
-      title={<>From commit to <span className="text-gradient">production</span></>}
+      title="From commit to" accent="production"
       subtitle="Automated builds and deploys keep releases routine — this site deploys itself on every push."
     >
       <Reveal>

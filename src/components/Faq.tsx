@@ -9,7 +9,7 @@ export function Faq() {
   const baseId = useId()
 
   return (
-    <Section id="faq" number={sectionNumber('faq')} eyebrow="FAQ" title={<>Common <span className="text-gradient">questions</span></>}>
+    <Section id="faq" number={sectionNumber('faq')} eyebrow="FAQ" title="Common" accent="questions">
       <Reveal className="mx-auto max-w-3xl">
         <ul className="space-y-3">
           {faqs.map((f, i) => {

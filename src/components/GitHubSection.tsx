@@ -15,7 +15,7 @@ export function GitHubSection() {
       id="github"
       number={sectionNumber('github')}
       eyebrow="GitHub"
-      title={<>Code in the <span className="text-gradient">open</span></>}
+      title="Code in the" accent="open"
       subtitle="My contribution activity over the past year."
     >
       <Reveal>

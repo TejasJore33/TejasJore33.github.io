@@ -6,7 +6,7 @@ import { Section } from './SectionHeading'
 
 export function About() {
   return (
-    <Section id="about" number={sectionNumber('about')} eyebrow="About" title={<>A bit about <span className="text-gradient">me</span></>}>
+    <Section id="about" number={sectionNumber('about')} eyebrow="About" title="A bit about" accent="me">
       <div className="grid gap-12 lg:grid-cols-2">
         <Reveal className="space-y-5 text-lg leading-relaxed text-slate-400">
           {profile.about.map((p) => (

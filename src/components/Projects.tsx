@@ -3,6 +3,7 @@ import { useId, useState } from 'react'
 import { moreProjects, projects, type Project, sectionNumber } from '../data/site'
 import { Reveal } from './Reveal'
 import { Section } from './SectionHeading'
+import { Tilt } from './Tilt'
 
 function ProjectCard({ project }: { project: Project }) {
   const [open, setOpen] = useState(false)
@@ -97,14 +98,16 @@ export function Projects() {
       id="projects"
       number={sectionNumber('projects')}
       eyebrow="Projects"
-      title={<>Selected <span className="text-gradient">work</span></>}
+      title="Selected" accent="work"
       subtitle="SaaS platforms, marketplaces and client products. Most of this code lives in private repositories."
       className="bg-ink-900/40"
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p, i) => (
           <Reveal key={p.title} delay={(i % 3) * 80} className="h-full">
-            <ProjectCard project={p} />
+            <Tilt max={5} className="h-full">
+              <ProjectCard project={p} />
+            </Tilt>
           </Reveal>
         ))}
       </div>
