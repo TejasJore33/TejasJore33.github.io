@@ -84,7 +84,7 @@ export function Projects() {
       number={sectionNumber('projects')}
       eyebrow="Projects"
       title={<>Selected <span className="text-gradient">work</span></>}
-      subtitle="A mix of client work, products and side projects."
+      subtitle="Things I've built — backends, web apps and practice projects."
       className="bg-ink-900/40"
     >
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
